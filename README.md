@@ -1,4 +1,4 @@
-## Projeto de Sorteador de Numeros
+## Projeto de Sorteador de Números
  - Projeto de revisão de lógica de programação.
 
 ## Linguagem e/ou tecnologias utilizadas:
