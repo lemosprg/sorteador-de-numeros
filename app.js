@@ -11,6 +11,12 @@ function sortear() {
         return;
     }
 
+    //Controle de numeros sorteados
+    if (quantidade > (ate - de)){
+        alert('A quantidade de números sorteados precisa ser MENOR que a quantidade de números disponíveis para o sorteio;\n - Escolha um range de números maior para sortear\n - Ou diminua a quantidade de números para sortear.');
+        return;
+    }
+
     let numerosSorteados = [];
     let numero;
     //Adicionar número sorteado no array e evitar que seja repetido
@@ -29,6 +35,7 @@ function sortear() {
     resultados.innerHTML = `<label class="texto__paragrafo__fim">Números Sorteados: ${numerosSorteados}.</label>`;
 
     alterarBotoes();
+    alterarSelecao();
 }
 
 function reiniciar(){
@@ -40,6 +47,7 @@ function reiniciar(){
     document.getElementById('ate').value = '';
     
     alterarBotoes();
+    alterarSelecao();
 }
 
 function gerandoNumeroAleatorio(min, max) {
@@ -63,5 +71,17 @@ function alterarBotoes(){
     
         botaoSortear.classList.remove('container__botao-desabilitado');
         botaoSortear.classList.add('container__botao');
+    }
+}
+
+//Controle que evita modificação dos números após sorteio
+function alterarSelecao() {
+    let editaveis = document.getElementsByClassName('container__input');
+    for (let i = 0; i < editaveis.length; i++) {
+        if (editaveis[i].disabled) {
+            editaveis[i].removeAttribute('disabled');
+        } else {
+            editaveis[i].setAttribute('disabled', 'true');
+        }
     }
 }
